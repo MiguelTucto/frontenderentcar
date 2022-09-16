@@ -9,15 +9,10 @@
       <v-form v-model="form.isValid">
         <v-text-field label="Email" v-model="form.email"  outlined shaped></v-text-field>
         <v-text-field label="Password" v-model="form.password" filled shaped></v-text-field>
-        <div class="flex-column my-5">
-          <v-divider></v-divider>
-          <p class="text-center grey--text">Or</p>
-        </div>
-        <div class="d-flex">
-          <a>I forgot my password</a>
-          <v-spacer></v-spacer>
-          <v-btn color="blue" :disabled="!this.form.isValid" @click="login()">Login</v-btn>
-        </div>
+        <v-btn color="blue" class="mb-8" :disabled="!this.form.isValid" @click="login()">Login</v-btn>
+        <v-divider></v-divider>
+        <p class="text-center grey--text">Or</p>
+        <v-btn class="mt-5" @click="$router.push('/register')">Create an account</v-btn>
       </v-form>
     </v-container>
   </v-container>
