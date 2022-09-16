@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "example",
+      "password": "example",
+      "planId": 1
+    },
+    {
+      "id": 2,
+      "email": "example2",
+      "password": "example2",
+      "planId": 2
+    },
+    {
+      "id": 3,
+      "email": "example3",
+      "password": "example3",
+      "planId": 1
+    }
+  ],
+  "plans": [
+    {
+      "id": 1,
+      "name": "Basic Plan",
+      "price": 300,
+      "description": "It's a Basic plan"
+    },
+    {
+      "id": 2,
+      "name": "Gold Plan",
+      "price": 400,
+      "description": "It's a Gold plan"
+    },
+    {
+      "id": 3,
+      "name": "Premium Plan",
+      "price": 500,
+      "description": "It's a Premium plan"
+    }
+  ]
+}
