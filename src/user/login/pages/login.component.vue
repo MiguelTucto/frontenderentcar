@@ -35,7 +35,7 @@ export default {
     }
   },
   created() {
-    usersApiService.getEmailAndPassword(this.form.email, this.form.password);
+
   },
   methods: {
     submit(){
