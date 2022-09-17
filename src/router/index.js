@@ -22,7 +22,27 @@ const router = createRouter({
         {
           path: "/register",
           name: "Register",
-          component: () => import("../user/login/pages/register.component.vue")
+          component: () => import("../user/login/pages/register.component.vue"),
+          children: [
+            {
+              path: "/register",
+              name: "FirstStep",
+              props: true,
+              component: () => import("../user/register/pages/first-step.component.vue")
+            },
+            {
+              path: "/register/secondstep",
+              name: "SecondStep",
+              props: true,
+              component: () => import("../user/register/pages/second-step.component.vue")
+            },
+            {
+              path: "/register/laststep",
+              name: "LastStep",
+              props: true,
+              component: () => import("../user/register/pages/last-step.component.vue")
+            }
+          ]
         }
       ]
     },

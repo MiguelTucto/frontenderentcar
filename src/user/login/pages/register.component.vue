@@ -1,24 +1,14 @@
 <template>
-<v-container>
-  <v-stepper v-model="step" >
-    <v-stepper-header>
-      <v-stepper-step :complete="step > 1" step="1">
-        Personal Information
-      </v-stepper-step>
-      <v-stepper-step :complete="step > 2" step="2">
-        Email and Password
-      </v-stepper-step>
-      <v-stepper-step :complete="step > 3" step="3">
-        Finish up
-      </v-stepper-step>
-    </v-stepper-header>
-    <v-stepper-items>
-      <v-stepper-content step="1">
-
-      </v-stepper-content>
-    </v-stepper-items>
-  </v-stepper>
-</v-container>
+<div>
+  <div clasS="card">
+    <pv-steps class="mt-5 mb-8" :model="items" :readonly="true" />
+  </div>
+  <router-view v-slot="{ Component }" :formData="formObject" @next-page="nextPage($event)" @prev-page="prevPage($event)">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
+</div>
 </template>
 
 <script>
@@ -26,7 +16,37 @@ export default {
   name: "register.component",
   data() {
     return {
-      step: 1
+      items: [
+        {
+          label: "Personal Information",
+          to: "/register"
+        },
+        {
+          label: "Email & Password",
+          to: "/register/secondstep"
+        },
+        {
+          label: "Term & Conditions",
+          to: "/register/laststep"
+        }
+      ],
+      formObject: {}
+    }
+  },
+  methods: {
+    nextPage(event) {
+      for (let field in event.formData) {
+        this.formObject[field] = event.formData[field];
+      }
+      localStorage.setItem("formObject", JSON.stringify(this.formObject));
+
+      this.$router.push(this.items[event.pageIndex + 1].to);
+    },
+    prevPage(event) {
+      this.$router.push(this.items[event.pageIndex - 1].to);
+    },
+    complete() {
+      this.$toast.add({severity:'success', summary:'Order submitted', detail: 'Dear, ' + this.formObject.firstname + ' ' + this.formObject.lastname + ' your order completed.'});
     }
   }
 };
