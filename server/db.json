@@ -1,22 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
-      "email": "example",
-      "password": "example",
-      "planId": 1
-    },
-    {
-      "id": 2,
-      "email": "example2",
-      "password": "example2",
-      "planId": 2
-    },
-    {
-      "id": 3,
-      "email": "example3",
-      "password": "example3",
-      "planId": 1
+      "name": "Miguel",
+      "lastName": "Tucto",
+      "address": "Emadi Mz H Lt 3",
+      "imageUrl": "asdasd",
+      "phone": "(051) 918-514-737",
+      "email": "tucto",
+      "password": "tucto",
+      "id": 1
     }
   ],
   "plans": [
