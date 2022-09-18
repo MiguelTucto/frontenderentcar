@@ -21,9 +21,10 @@
 <script>
 import UsersApiService from "@/user/subscription/services/users-api.service";
 import usersApiService from "@/user/subscription/services/users-api.service";
+import Navbar from "../../../components/navbar.component.vue";
 
 export default {
-  name: "login.component",
+    name: "login.component",
   data(){
     return {
       form: {

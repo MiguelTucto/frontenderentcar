@@ -56,6 +56,10 @@ const router = createRouter({
           component: () => import("../user/subscription/pages/subscription-section.component.vue")
         }
       ]
+    },
+    {
+      path: "/mycars",
+      component: () => import("../user/mycars/pages/mycars.component.vue")
     }
   ],
 });

@@ -38,5 +38,28 @@
       "price": 500,
       "description": "It's a Premium plan"
     }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "name": "Best car",
+      "price":  50,
+      "description": "This is a good car!",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Best car 2",
+      "price":  30,
+      "description": "This is a good car 2!",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Best car 3",
+      "price":  80,
+      "description": "This is a good car 3!",
+      "userId": 2
+    }
   ]
 }
