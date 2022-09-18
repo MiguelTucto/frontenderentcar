@@ -1,7 +1,7 @@
 <template>
 <div>
   <div clasS="card">
-    <pv-steps class="mt-5 mb-8" :model="items" :readonly="true" />
+    <pv-steps class="mt-8 mb-8" :model="items" :readonly="true" />
   </div>
   <router-view v-slot="{ Component }" :formData="formObject" @next-page="nextPage($event)" @prev-page="prevPage($event)" @complete="complete">
     <keep-alive>

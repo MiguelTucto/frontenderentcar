@@ -1,16 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Miguel",
-      "lastName": "Tucto",
-      "address": "Emadi Mz H Lt 3",
-      "imageUrl": "asdasd",
-      "phone": "(051) 918-514-737",
-      "email": "tucto",
-      "password": "tucto",
-      "id": 1
-    }
-  ],
+  "users": [],
   "plans": [
     {
       "id": 1,

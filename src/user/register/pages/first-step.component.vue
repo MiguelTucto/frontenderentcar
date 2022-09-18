@@ -22,10 +22,10 @@
               <small v-show="!v$.imageUrl.$model && submitted" class="p-error">Image URL is required.</small>
               <label for="phone" class="block text-900 font-medium mb-2">Phone</label>
               <pv-input-mask v-model="phone" :class="{ 'p-invalid': v$.phone.$invalid && submitted }" mask="(051) 999-999-999"  placeholder="(051) 999-999-999"/>
-              <small v-show="!v$.phone.$model && submitted" class="p-error">Phone is required.</small>
+              <small v-show="!v$.phone.$model && submitted" class="p-error ml-2">Phone is required.</small>
             </div>
             <div class="flex justify-space-between mt-5">
-              <pv-button icon="pi pi-arrow-left" label="Back" class="p-button-link" @click="$router.push('/login')" />
+              <pv-button icon="pi pi-car" label="Go to eRentCar" class="p-button-link" @click="$router.push('/login')" />
               <pv-button label="Submit" class="p-button-rounded" type="submit" />
             </div>
           </form>

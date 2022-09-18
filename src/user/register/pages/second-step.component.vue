@@ -15,7 +15,10 @@
               <pv-input-text v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" class="w-full" aria-describedby="password"/>
               <small v-show="!v$.password.$model && submitted" class="p-error">Password is required.</small>
             </div>
-            <pv-button label="Register" class="p-button-rounded w-full" type="submit"/>
+            <div class="flex justify-space-between mt-5">
+              <pv-button icon="pi pi-arrow-left" label="Back" class="p-button-link" @click="prevPage" />
+              <pv-button label="Submit" class="p-button-rounded " type="submit"/>
+            </div>
           </form>
         </template>
       </pv-card>
@@ -68,8 +71,8 @@ export default {
         this.nextPage();
       }
     },
-    mounted() {
-      this.formObject = JSON.parse(localStorage.getItem("formObject"));
+    prevPage() {
+      this.$emit("prev-page", { pageIndex: 1 });
     }
   }
 };
