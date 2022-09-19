@@ -16,9 +16,13 @@
             <CarCompleteComponent :carInfo = "carInfo"  />
             <v-btn
                 text
-                @click="this.deleteCar"
             >
                Reserve
+            </v-btn>
+            <v-btn
+                text
+            >
+                Favorites
             </v-btn>
         </v-card-actions>
     </v-card>
