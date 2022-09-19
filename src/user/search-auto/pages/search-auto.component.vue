@@ -1,6 +1,11 @@
 <template>
     <NavbarComponent />
+    <div class = "flex-search">
+        <v-text-field label="Search your car..." v-model = "search" class = "styles-input"></v-text-field>
+        <v-btn depressed color="primary" @click = "searchCar" class = "ml-15">Search</v-btn>
+    </div>
     <ul class = "container">
+
         <li v-for = "car in cars">
             <SearchAutoCarComponent :carInfo = "car" />
         </li>
@@ -21,7 +26,8 @@
         data(){
             return {
                 cars: [],
-                searchAutoService: null
+                searchAutoService: null,
+                search: ""
             }
         },
         created(){
@@ -29,6 +35,12 @@
             this.searchAutoService.getAll().then((response) => {
                 this.cars = response.data;
             })
+        },
+        methods: {
+            searchCar(){
+                let carsSearch = this.cars.filter(car => car.brand.includes(this.search));
+                this.cars = carsSearch
+            }
         }
     }
 </script>
@@ -39,6 +51,19 @@
     }
     li{
         list-style: none;
+    }
+    .flex-search{
+        display: flex;
+        align-items: center;
+        width: 60%;
+    }
+    .ml-15{
+        margin-left: 15px;
+    }
+    .styles-input{
+        margin-top: 20px;
+        margin-left: 60px;
+        width: 60%;
     }
 
 </style>
