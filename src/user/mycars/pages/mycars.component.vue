@@ -25,14 +25,12 @@ export default {
         this.carsService = new MycarsApiService();
         this.carsService.getById(1).then((response) => {
             this.cars = response.data;
-            console.log(this.cars)
         })
     },
     deleteCar(){
         console.log("Wii")
         this.carsService.delete(this.car.id).then((response) => {
             this.cars = this.cars.filter((car) => car.id !== this.car.id);
-            console.log(response);
         })
     }
 }

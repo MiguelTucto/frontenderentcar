@@ -60,6 +60,10 @@ const router = createRouter({
     {
       path: "/mycars",
       component: () => import("../user/mycars/pages/mycars.component.vue")
+    },
+    {
+      path: "/search-auto",
+      component: () => import("../user/search-auto/pages/search-auto.component.vue")
     }
   ],
 });
