@@ -3,17 +3,20 @@
     {
       "id": 1,
       "email": "example",
+      "name": "Juan",
       "password": "example",
       "planId": 1
     },
     {
       "id": 2,
+      "name": "Carlos",
       "email": "example2",
       "password": "example2",
       "planId": 2
     },
     {
       "id": 3,
+      "name": "Enrique",
       "email": "example3",
       "password": "example3",
       "planId": 1
@@ -42,24 +45,41 @@
   "cars": [
     {
       "id": 1,
-      "name": "Best car",
-      "price":  50,
-      "description": "This is a good car!",
-      "userId": 1
+      "address": "Miraflores, Lima - Perú",
+      "brand": "Toyota",
+      "year": 2010,
+      "model": "string",
+      "mileage": 200,
+      "seating": 5,
+      "manual": true,
+      "carValueInDollars": 10000,
+      "extraInformation": "It's a good car!",
+      "rate": 150,
+      "rentAmountDay": 100,
+      "imagePath": "https://www.toyota.com/imgix/content/dam/toyota/jellies/max/2022/rav4/hybridse/4524/8w2/2.png?fm=webp&bg=white&w=768&h=328&q=90",
+      "category": "LITTLE",
+      "mechanicConditions": "REGULAR",
+      "clientId": 1,
+      "carModelId": 1
     },
     {
       "id": 2,
-      "name": "Best car 2",
-      "price":  30,
-      "description": "This is a good car 2!",
-      "userId": 1
-    },
-    {
-      "id": 3,
-      "name": "Best car 3",
-      "price":  80,
-      "description": "This is a good car 3!",
-      "userId": 2
+      "address": "San Juan, Lima - Perú",
+      "brand": "Toyota",
+      "year": 2015,
+      "model": "string",
+      "mileage": 250,
+      "seating": 2,
+      "manual": true,
+      "carValueInDollars": 5000,
+      "extraInformation": "It's a good car!",
+      "rate": 150,
+      "rentAmountDay": 50,
+      "imagePath": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-toyota-tundra-trd-pro-exterior-front-quarter-1632213050.jpg",
+      "category": "LITTLE",
+      "mechanicConditions": "REGULAR",
+      "clientId": 1,
+      "carModelId": 1
     }
   ]
 }
