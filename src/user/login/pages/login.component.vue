@@ -50,7 +50,7 @@ export default {
           if (response.data.length !== 0) {
             localStorage.setItem('clientId', response.data[0].id.toString());
             noLogin = false;
-            this.$router.push("/subscription");
+            this.$router.push("/mycars");
           }
         })
         .catch(e => {
