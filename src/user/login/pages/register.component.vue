@@ -42,28 +42,16 @@ export default {
         this.formObject[field] = event.formData[field];
       }
       localStorage.setItem("formObject", JSON.stringify(this.formObject));
-
       this.$router.push(this.items[event.pageIndex + 1].to);
     },
     prevPage(event) {
       this.$router.push(this.items[event.pageIndex - 1].to);
     },
-    async complete(event) {
+    complete(event) {
       for (let field in event.formData) {
         this.formObject[field] = event.formData[field];
       }
       this.methodToCreateUser();
-    },
-    async createUser(user) {
-      console.log(user);
-      await UsersApiService.create(user)
-        .then(async (response) => {
-          localStorage.removeItem("formObject");
-          await this.$router.push( { path: "/login"});
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     },
     methodToCreateUser() {
       const user = {
@@ -76,6 +64,18 @@ export default {
         password: this.formObject.secondStepDetail.password
       };
       this.createUser(user);
+    },
+    createUser(user) {
+      console.log(user);
+      UsersApiService.create(user)
+        .then(() => {
+          window.alert("Wu-uu!");
+          localStorage.removeItem("formObject");
+         this.$router.push({ name: "Login" });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 };

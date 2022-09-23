@@ -8,7 +8,7 @@
 import NavbarComponent from "../../../components/navbar.component.vue";
 import ListcarsComponent from "./listcars.component.vue";
 import {MycarsApiService} from "../services/mycars-api-service";
-
+import { userStore } from "@/user/login/stores/user-store";
 export default {
     name: "mycars.component",
     components: {
@@ -22,15 +22,11 @@ export default {
         }
     },
     created(){
+      const us = userStore();
         this.carsService = new MycarsApiService();
-        this.carsService.getById(1).then((response) => {
-            this.cars = response.data;
-        })
-    },
-    deleteCar(){
-        console.log("Wii")
-        this.carsService.delete(this.car.id).then((response) => {
-            this.cars = this.cars.filter((car) => car.id !== this.car.id);
+        this.carsService.getById(us.id).then((response) => {
+            this.cars = response.data.content;
+            console.log(response);
         })
     }
 }

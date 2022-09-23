@@ -1,10 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import FreeComponent from "@/user/login/pages/free.component.vue";
 
-import navigationSectionComponent from "@/user/subscription/pages/navigation-section.component.vue";
-
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -47,11 +43,11 @@ const router = createRouter({
       ]
     },
     {
-      path: "/user",
+      path: "/user/:id",
       component: () => import("../user/subscription/pages/navigation-section.component.vue"),
       children: [
         {
-          path: "/subscription",
+          path: "/user/:id/subscription",
           name: "Profile",
           component: () => import("../user/subscription/pages/subscription-section.component.vue")
         }
@@ -59,10 +55,12 @@ const router = createRouter({
     },
     {
       path: "/mycars",
+      name: "cars",
       component: () => import("../user/mycars/pages/mycars.component.vue")
     },
     {
       path: "/search-auto",
+      name: "SearchAuto",
       component: () => import("../user/search-auto/pages/search-auto.component.vue")
     }
   ],

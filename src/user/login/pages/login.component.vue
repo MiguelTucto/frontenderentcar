@@ -6,61 +6,87 @@
     </v-container>
     <v-container>
       <h2 class="">Welcome to eRentCar</h2>
-      <v-form v-model="form.isValid">
-        <v-text-field label="Email" v-model="form.email"  outlined shaped></v-text-field>
-        <v-text-field label="Password" v-model="form.password" filled shaped></v-text-field>
-        <v-btn color="blue" class="mb-8" :disabled="!this.form.isValid" @click="login()">Login</v-btn>
-        <v-divider></v-divider>
-        <p class="text-center grey--text">Or</p>
-        <v-btn class="mt-5" @click="$router.push('/register')">Create an account</v-btn>
-      </v-form>
+      <form @submit.prevent="handleSubmit(!v$.$invalid)">
+        <label for="email" class="block text-900 front-medium mb-2">Email</label>
+        <pv-input-text v-model="email" :class="{ 'p-invalid': v$.email.$invalid && submitted }" class="w-full" />
+        <small v-show="!v$.email.$model && submitted" class="p-error">Email is required.</small>
+        <label for="password" class="block text-900 front-medium mb-2">Password</label>
+        <pv-input-text v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" class="w-full" />
+        <small v-show="!v$.password.$model && submitted" class="p-error">Password is required.</small>
+        <pv-button type="submit" class="p-button-rounded" label="Login"/>
+        <pv-button @click="$router.push('/register')" label="Register" />
+      </form>
     </v-container>
   </v-container>
 </template>
 
 <script>
 import UsersApiService from "@/user/subscription/services/users-api.service";
+import { userStore } from "@/user/login/stores/user-store";
+import { required } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 import usersApiService from "@/user/subscription/services/users-api.service";
-import Navbar from "../../../components/navbar.component.vue";
+import router from "@/router";
 
 export default {
-    name: "login.component",
+  name: "login.component",
+  setup: () => ({ v$: useVuelidate() }),
+  userStore: null,
   data(){
     return {
-      form: {
-        email: "",
-        password: "",
-        isValid: false
-      },
+      submitted: false,
+      email: "",
+      password: "",
       wrongEmailOrPassword: false
-    }
+    };
   },
-  created() {
-
+  validations() {
+    return {
+      email: {
+        required
+      },
+      password: {
+        required
+      }
+    };
   },
   methods: {
     submit(){
       this.form = { email: "", password: "" };
     },
-    login() {
-      let noLogin = true;
-
-      UsersApiService.getEmailAndPassword(this.form.email, this.form.password)
-        .then(response => {
-          if (response.data.length !== 0) {
-            localStorage.setItem('clientId', response.data[0].id.toString());
-            noLogin = false;
-            this.$router.push("/mycars");
-          }
+    login(email, password) {
+      const us = userStore();
+      UsersApiService.getEmailAndPassword(email, password)
+        .then((response) => {
+          us.setUser(response.data)
+          this.$router.push({ name: "cars"});
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
-        })
-      if (noLogin) {
-        this.wrongEmailOrPassword = true;
-      } else{
-        this.submit();
+        });
+    },
+    handleSubmit(isFormValid) {
+      const us = userStore();
+
+      this.submitted = true;
+      if (isFormValid) {
+        usersApiService
+          .getEmailAndPassword(this.email, this.password)
+          .then((response) => {
+            us.setUser(response.data)
+            this.$router.push({ name: "cars" })
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+
       }
+    },
+    loginDto() {
+      return {
+        email: this.email,
+        password: this.password
+      };
     }
   }
 };

@@ -1,4 +1,6 @@
 import { createApp } from "vue";
+import { createPinia } from "pinia";
+import PiniaPluginPersistedState from "pinia-plugin-persistedstate";
 import App from "./App.vue";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
@@ -46,9 +48,12 @@ import { loadFonts } from "@/plugins/webfontloader";
 loadFonts()
 
 const app = createApp(App);
+const pinia = createPinia()
+pinia.use(PiniaPluginPersistedState)
 app.config.devtools = true
 app.use(router);
 app.use(vuetify);
+app.use(pinia);
 
 // PrimeVue Services
 app.use(PrimeVue, { ripple: true });
