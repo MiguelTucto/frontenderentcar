@@ -7,7 +7,7 @@
 
             <v-spacer></v-spacer>
             <v-btn icon>
-                <v-icon>mdi-account</v-icon>
+                <v-icon @click="$router.push('/profile')">mdi-account</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>

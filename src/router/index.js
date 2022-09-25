@@ -62,6 +62,11 @@ const router = createRouter({
       path: "/search-auto",
       name: "SearchAuto",
       component: () => import("../user/search-auto/pages/search-auto.component.vue")
+    },
+    {
+      path: "/profile",
+      name: "Profile",
+      component: () => import("../user/profile/pages/profile.vue")
     }
   ],
 });
