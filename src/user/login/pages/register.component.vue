@@ -57,7 +57,6 @@ export default {
       const user = {
         name: this.formObject.name,
         lastName: this.formObject.lastName,
-        address: this.formObject.address,
         imageUrl: this.formObject.imageUrl,
         phone: this.formObject.phone,
         email: this.formObject.secondStepDetail.email,

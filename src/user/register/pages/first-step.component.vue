@@ -14,14 +14,11 @@
               <label for="lastName" class="block text-900 font-medium mb-2">Last Name</label>
               <pv-input-text v-model="lastName" :class="{ 'p-invalid': v$.lastName.$invalid && submitted }" class="w-full"/>
               <small v-show="!v$.lastName.$model && submitted" class="p-error">Last Name is required.</small>
-              <label for="address" class="block text-900 font-medium mb-2">Address</label>
-              <pv-input-text v-model="address" :class="{ 'p-invalid': v$.address.$invalid && submitted }" class="w-full"/>
-              <small v-show="!v$.address.$model && submitted" class="p-error">Address is required.</small>
               <label for="imageUrl" class="block text-900 font-medium mb-2">Image URL</label>
               <pv-input-text v-model="imageUrl" :class="{ 'p-invalid': v$.imageUrl.$invalid && submitted }" class="w-full"/>
               <small v-show="!v$.imageUrl.$model && submitted" class="p-error">Image URL is required.</small>
               <label for="phone" class="block text-900 font-medium mb-2">Phone</label>
-              <pv-input-mask v-model="phone" :class="{ 'p-invalid': v$.phone.$invalid && submitted }" mask="(051) 999-999-999"  placeholder="(051) 999-999-999"/>
+              <pv-input-text v-model="phone" :class="{ 'p-invalid': v$.phone.$invalid && submitted }"/>
               <small v-show="!v$.phone.$model && submitted" class="p-error ml-2">Phone is required.</small>
             </div>
             <div class="flex justify-space-between mt-5">
@@ -48,7 +45,6 @@ export default {
       submitted: false,
       name: "",
       lastName: "",
-      address: "",
       imageUrl: "",
       phone: null,
       user: {},
@@ -61,9 +57,6 @@ export default {
         required,
       },
       lastName: {
-        required,
-      },
-      address: {
         required,
       },
       imageUrl: {
@@ -81,7 +74,6 @@ export default {
           formData: {
             name: this.name,
             lastName: this.lastName,
-            address: this.address,
             imageUrl: this.imageUrl,
             phone: this.phone
           },
