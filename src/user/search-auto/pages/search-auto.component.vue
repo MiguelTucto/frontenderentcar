@@ -33,7 +33,7 @@
         created(){
             this.searchAutoService = new SearchAutoApiService();
             this.searchAutoService.getAll().then((response) => {
-                this.cars = response.data;
+                this.cars = response.data.content;
             })
         },
         methods: {
