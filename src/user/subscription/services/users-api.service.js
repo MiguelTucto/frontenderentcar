@@ -13,6 +13,9 @@ class UsersApiService{
   update(id, data){
     return http.put(`/users/${id}`, data);
   }
+  getById(id){
+    return http.get(`/users/${id}`);
+  }
 }
 
 export default new UsersApiService

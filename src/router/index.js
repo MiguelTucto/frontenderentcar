@@ -43,17 +43,6 @@ const router = createRouter({
       ]
     },
     {
-      path: "/user/:id",
-      component: () => import("../user/subscription/pages/navigation-section.component.vue"),
-      children: [
-        {
-          path: "/user/:id/subscription",
-          name: "Profile",
-          component: () => import("../user/subscription/pages/subscription-section.component.vue")
-        }
-      ]
-    },
-    {
       path: "/mycars",
       name: "cars",
       component: () => import("../user/mycars/pages/mycars.component.vue")
@@ -62,6 +51,16 @@ const router = createRouter({
       path: "/search-auto",
       name: "SearchAuto",
       component: () => import("../user/search-auto/pages/search-auto.component.vue")
+    },
+    {
+      path: "/profile",
+      name: "Profile",
+      component: () => import("../user/profile/pages/profile.component.vue")
+    },
+    {
+      path: "/favourite",
+      name: "Favourite",
+      component: () => import("../user/favourite/pages/favourite.component.vue")
     }
   ],
 });

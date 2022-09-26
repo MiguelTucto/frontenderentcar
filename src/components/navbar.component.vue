@@ -6,8 +6,8 @@
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
-            <v-btn icon>
-                <v-icon>mdi-account</v-icon>
+            <v-btn icon >
+                <v-icon @click="$router.push('/profile')">mdi-account</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>
@@ -16,7 +16,7 @@
                 <v-icon @click="$router.push('/search-auto')">mdi-magnify</v-icon>
             </v-btn>
             <v-btn icon>
-                <v-icon>mdi-star</v-icon>
+                <v-icon  @click="$router.push('/favourite')">mdi-star</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon  @click="$router.push('/login')">mdi-logout</v-icon>
