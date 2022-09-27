@@ -1,4 +1,5 @@
 <template>
+    <NavbarComponent />
   <v-row justify = "center">
     <v-dialog
       v-model="dialog"
@@ -84,7 +85,8 @@
 </template>
 
 <script>
-import UserService from "/src/user/profile/services/user.service"
+import UserService from "/src/user/profile/services/user.service";
+import NavbarComponent from "../../../components/navbar.component.vue";
 export default {
   name: "profile",
   data:()=>({
@@ -134,6 +136,9 @@ export default {
       this.dialog =false;
     }
   },
+    components:{
+      NavbarComponent
+    },
   created(){
     this.retrieveUsers();
   },
