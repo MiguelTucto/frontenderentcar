@@ -4,6 +4,12 @@ export class SearchAutoApiService{
     getAll(){
         return http.get(`/cars`);
     }
+    addFavourite(userId, carId){
+        return http.post(`/favourites/user/${userId}/car/${carId}`, {
+            userId,
+            carId
+        });
+    }
 }
 
 export default new SearchAutoApiService();

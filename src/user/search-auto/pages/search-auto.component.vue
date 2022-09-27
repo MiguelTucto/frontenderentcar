@@ -5,7 +5,6 @@
         <v-btn depressed color="primary" @click = "searchCar" class = "ml-15">Search</v-btn>
     </div>
     <ul class = "container">
-
         <li v-for = "car in cars">
             <SearchAutoCarComponent :carInfo = "car" />
         </li>
@@ -33,7 +32,7 @@
         created(){
             this.searchAutoService = new SearchAutoApiService();
             this.searchAutoService.getAll().then((response) => {
-                this.cars = response.data;
+                this.cars = response.data.content;
             })
         },
         methods: {

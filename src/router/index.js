@@ -43,17 +43,6 @@ const router = createRouter({
       ]
     },
     {
-      path: "/user/:id",
-      component: () => import("../user/subscription/pages/navigation-section.component.vue"),
-      children: [
-        {
-          path: "/user/:id/subscription",
-          name: "Profile",
-          component: () => import("../user/subscription/pages/subscription-section.component.vue")
-        }
-      ]
-    },
-    {
       path: "/mycars",
       name: "cars",
       component: () => import("../user/mycars/pages/mycars.component.vue")
@@ -66,7 +55,12 @@ const router = createRouter({
     {
       path: "/profile",
       name: "Profile",
-      component: () => import("../user/profile/pages/profile.vue")
+      component: () => import("../user/profile/pages/profile.component.vue")
+    },
+    {
+      path: "/favourite",
+      name: "Favourite",
+      component: () => import("../user/favourites/pages/my-favourites.component.vue")
     }
   ],
 });
