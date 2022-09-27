@@ -56,7 +56,6 @@
   </v-row>
 
   <v-card class="mx-auto" max-width="1000" style="height:430px;background-color: #30A8F2; margin-top: 10% ">
-
     <div style="z-index: 2; position:absolute;align-content: center;align-items: center ;top: 130px; margin-left: 2.5%;width: 95%; height: 100%">
       <v-list style="background-color:transparent; width: 100%" class="text-sm-left">
         <v-list-item size="100" style="margin-left: 34%">
