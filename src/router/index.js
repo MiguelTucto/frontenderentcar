@@ -60,7 +60,7 @@ const router = createRouter({
     {
       path: "/favourite",
       name: "Favourite",
-      component: () => import("../user/favourite/pages/favourite.component.vue")
+      component: () => import("../user/favourites/pages/my-favourites.component.vue")
     }
   ],
 });

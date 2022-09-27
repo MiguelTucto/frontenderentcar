@@ -11,9 +11,10 @@
 </template>
 
 <script>
-  import NavbarComponent from "@/components/navbar.component";
+  import NavbarComponent from "@/components/navbar.component.vue";
   import {FavouritesApiService} from "@/user/favourites/services/favourites-api.service";
-  import MyFavCarComponent from "@/user/favourites/pages/my-fav-car.component";
+  import MyFavCarComponent from "@/user/favourites/pages/my-fav-car.component.vue";
+  import { userStore } from "@/user/login/stores/user-store";
 
   export default {
     name: "my-favourites.component",
@@ -28,9 +29,16 @@
       }
     },
     created(){
+        const us = userStore();
       this.favouriteCarService = new FavouritesApiService();
-      this.favouriteCarService.getAll().then((response) => {
-        this.cars = response.data;
+      this.favouriteCarService.getAllByUser(us.id).then((response) => {
+          let data = response.data.content;
+          for(let i = 0; i < data.length; i++){
+              this.favouriteCarService.getInfoCarById(data[i].carId).then((response) => {
+                  this.cars.push(response.data);
+              })
+          }
+
       })
     }
   }

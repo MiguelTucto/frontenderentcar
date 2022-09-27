@@ -11,8 +11,7 @@
     <v-divider class="mx-4"></v-divider>
     <v-card-actions>
       <CarCompleteComponent :carInfo = "carInfo"  />
-      <v-btn text>Reserve</v-btn>
-      <v-btn text>Favorites</v-btn>
+      <v-btn text>Remove</v-btn>
     </v-card-actions>
   </v-card>
 </template>
