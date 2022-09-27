@@ -5,7 +5,10 @@ export class SearchAutoApiService{
         return http.get(`/cars`);
     }
     addFavourite(userId, carId){
-        return http.post(`/favourites/user/${userId}/car/${carId}`);
+        return http.post(`/favourites/user/${userId}/car/${carId}`, {
+            userId,
+            carId
+        });
     }
 }
 
