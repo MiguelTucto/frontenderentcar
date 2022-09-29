@@ -4,10 +4,12 @@
             <v-toolbar-title>
                 <v-img src="src/assets/img/eRentCar-removebg-preview.png" class = "style-logo"></v-img>
             </v-toolbar-title>
-
             <v-spacer></v-spacer>
             <v-btn icon >
                 <v-icon @click="$router.push('/profile')">mdi-account</v-icon>
+            </v-btn>
+            <v-btn icon>
+                <v-icon  @click="$router.push('/add-car')">mdi-plus-circle</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>

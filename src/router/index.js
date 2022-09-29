@@ -61,6 +61,11 @@ const router = createRouter({
       path: "/favourite",
       name: "Favourite",
       component: () => import("../user/favourites/pages/my-favourites.component.vue")
+    },
+    {
+      path: "/add-car",
+      name: "AddCar",
+      component: () => import("../user/add-car/pages/addcar.component.vue")
     }
   ],
 });
