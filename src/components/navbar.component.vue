@@ -8,18 +8,24 @@
             <v-btn icon >
                 <v-icon @click="$router.push('/profile')">mdi-account</v-icon>
             </v-btn>
-            <v-btn icon>
-                <v-icon  @click="$router.push('/add-car')">mdi-plus-circle</v-icon>
-            </v-btn>
-            <v-btn icon>
-                <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>
-            </v-btn>
+            <div v-if = "this.user.typeOfUser == 'Arrendador' ">
+                <v-btn icon>
+                    <v-icon  @click="$router.push('/add-car')">mdi-plus-circle</v-icon>
+                </v-btn>
+            </div>
+            <div v-if = "this.user.typeOfUser == 'Arrendatario'">
+                <v-btn icon>
+                    <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>
+                </v-btn>
+            </div>
             <v-btn icon>
                 <v-icon @click="$router.push('/search-auto')">mdi-magnify</v-icon>
             </v-btn>
-            <v-btn icon>
-                <v-icon  @click="$router.push('/favourite')">mdi-star</v-icon>
-            </v-btn>
+            <div v-if = "this.user.typeOfUser == 'Arrendatario'">
+                <v-btn icon>
+                    <v-icon  @click="$router.push('/favourite')">mdi-star</v-icon>
+                </v-btn>
+            </div>
             <v-btn icon>
                 <v-icon  @click="$router.push('/login')">mdi-logout</v-icon>
             </v-btn>
@@ -27,8 +33,17 @@
     </v-card>
 </template>
 <script>
+import { userStore } from "@/user/login/stores/user-store";
     export default {
-        name: "navbar.component"
+        name: "navbar.component",
+        data(){
+            return{
+                user: {}
+            }
+        },
+        created(){
+            this.user = userStore();
+        }
     }
 
 </script>
