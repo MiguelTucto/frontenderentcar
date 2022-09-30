@@ -1,7 +1,7 @@
 <template>
   <NavbarComponent />
   <div class = "flex-search">
-    <v-text-field label="Your favourites..." class = "styles-input"></v-text-field>
+    <v-text-field label="Your favorites..." class = "styles-input"></v-text-field>
   </div>
   <ul class = "container">
     <li v-for = "car in cars">
@@ -29,6 +29,7 @@
   import {FavouritesApiService} from "@/user/favourites/services/favourites-api.service";
   import CarCompleteComponent from "../../mycars/pages/carcomplete.component.vue";
   import { userStore } from "@/user/login/stores/user-store";
+  import Swal from "sweetalert2";
 
   export default {
     name: "my-favourites.component",
@@ -58,9 +59,26 @@
     },
       methods: {
           remove(id){
-              this.favouriteCarService = new FavouritesApiService();
-              this.favouriteCarService.deleteById(id).then((response) => {
-                  this.cars = this.cars.filter(car => car.idFavourite != id);
+              Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      this.favouriteCarService = new FavouritesApiService();
+                      this.favouriteCarService.deleteById(id).then((response) => {
+                          this.cars = this.cars.filter(car => car.idFavourite != id);
+                      })
+                      Swal.fire(
+                          'Deleted!',
+                          'Your car has been deleted from favorites.',
+                          'success'
+                      )
+                  }
               })
 
           }

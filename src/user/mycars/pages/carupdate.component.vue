@@ -125,7 +125,15 @@ export default{
             myCarsService.updateById(this.carInfo.id, data).then((response) => {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Your work has been saved',
+                    title: 'Your info has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                this.dialog = false
+            }).catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'There is an error',
                     showConfirmButton: false,
                     timer: 1500
                 })

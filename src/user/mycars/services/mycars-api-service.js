@@ -10,6 +10,9 @@ export class MycarsApiService{
     updateById(carId, data){
         return http.put(`cars/${carId}`, data)
     }
+    deleteRentCarById(idRent){
+        return http.delete(`rents/${idRent}`);
+    }
 }
 
 export default new MycarsApiService();

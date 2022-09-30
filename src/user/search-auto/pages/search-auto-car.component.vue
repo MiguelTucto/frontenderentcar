@@ -15,7 +15,7 @@
         <v-card-actions>
             <CarCompleteComponent :carInfo = "carInfo"  />
             <div v-if = "user.typeOfUser == 'Arrendatario'">
-                <v-btn text>Reserve</v-btn>
+                <v-btn text @click = "addCarsRents(user.id, carInfo.id)">Reserve</v-btn>
                 <v-btn text @click = "addFavourites(user.id, carInfo.id)">Favorites</v-btn>
             </div>
         </v-card-actions>
@@ -26,16 +26,19 @@
 import CarCompleteComponent from "../../mycars/pages/carcomplete.component.vue";
 import { userStore } from "@/user/login/stores/user-store";
 import {SearchAutoApiService} from "../services/search-auto-api-service";
+import Swal from "sweetalert2";
 
 export default {
     name: "car.component",
     data(){
       return{
-          user: null
+          user: null,
+          serviceSearchAuto: null
       }
     },
     created(){
          this.user = userStore();
+        this.serviceSearchAuto = new SearchAutoApiService();
     },
     components: {
         CarCompleteComponent
@@ -45,15 +48,39 @@ export default {
     ],
     methods:{
         addFavourites(userId, carId){
-            this.serviceSearchAuto = new SearchAutoApiService();
             this.serviceSearchAuto.addFavourite(userId, carId).then((response) => {
-                console.log(response);
-                console.log("Added correctly!");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Car added to favorites',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }).catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'There is an error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
-            console.log(userId, carId);
         },
-        addCarsRents(userId, carId){
-
+         addCarsRents(userId, carId){
+            console.log(userId, carId)
+             this.serviceSearchAuto.addRentCar(userId, carId).then((response) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Car added to rents',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }).catch((error) => {
+                 Swal.fire({
+                     icon: 'error',
+                     title: 'There is an error',
+                     showConfirmButton: false,
+                     timer: 1500
+                 })
+             })
         }
     }
 }

@@ -14,14 +14,27 @@
         <v-divider class="mx-4"></v-divider>
         <v-card-actions>
             <CarCompleteComponent :carInfo = "carInfo"  />
-            <CarUpdateComponent :carInfo = "carInfo" />
-            <v-btn
-                color="red lighten-2"
-                text
-                @click="this.deleteCar(carInfo.id)"
-            >
-                Delete
-            </v-btn>
+            <div v-if = "this.user.typeOfUser =='Arrendador' ">
+                <CarUpdateComponent :carInfo = "carInfo" />
+            </div>
+            <div v-if = "this.user.typeOfUser =='Arrendatario' ">
+                <v-btn
+                    color="red lighten-2"
+                    text
+                    @click="this.deleteRentCar(carInfo.idRent)"
+                >
+                    Delete Reservation
+                </v-btn>
+            </div>
+            <div v-if =  "this.user.typeOfUser =='Arrendador' ">
+                <v-btn
+                    color="red lighten-2"
+                    text
+                    @click="this.deleteCar(carInfo.id)"
+                >
+                    Delete
+                </v-btn>
+            </div>
         </v-card-actions>
     </v-card>
 </template>
@@ -31,8 +44,9 @@ import CarCompleteComponent from "./carcomplete.component.vue";
 import CarUpdateComponent from "./carupdate.component.vue";
 import  {MycarsApiService} from "../services/mycars-api-service";
 import Swal from "sweetalert2";
+import {userStore} from "../../login/stores/user-store";
 
-    export default {
+export default {
         name: "car.component",
         components: {
             CarCompleteComponent,
@@ -40,15 +54,19 @@ import Swal from "sweetalert2";
         },
         data(){
             return{
+                user: null,
                 carsService: null
             }
         },
         props: [
             "carInfo"
         ],
+        created(){
+            this.user = userStore();
+            this.carsService = new MycarsApiService()
+        },
         methods:{
             deleteCar(idCar){
-               this.carsService = new MycarsApiService()
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -60,15 +78,50 @@ import Swal from "sweetalert2";
                 }).then((result) => {
                     if (result.isConfirmed) {
                         this.carsService.deleteById(idCar).then((response) => {
-                            console.log(response);
+                            Swal.fire(
+                                'Deleted!',
+                                'Your car has been deleted.',
+                                'success'
+                            )
                             this.$emit("clicked", idCar);
                         })
-                        Swal.fire(
-                            'Deleted!',
-                            'Your car has been deleted.',
-                            'success'
-                        )
                     }
+                }).catch((error) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'There is an error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+            },
+            deleteRentCar(idCar){
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.carsService.deleteRentCarById(idCar).then((response) => {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your rent has been deleted.',
+                                'success'
+                            )
+                            this.$emit("clicked", idCar);
+                        })
+                    }
+                }).catch((error) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'There is an error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 })
             }
         }
