@@ -16,14 +16,13 @@
             <CarCompleteComponent :carInfo = "carInfo"  />
             <v-btn
                 text
-                @click="this.deleteCar"
             >
                 Update
             </v-btn>
             <v-btn
                 color="red lighten-2"
                 text
-                @click="this.deleteCar"
+                @click="this.deleteCar(carInfo.id)"
             >
                 Delete
             </v-btn>
@@ -33,15 +32,30 @@
 
 <script>
 import CarCompleteComponent from "./carcomplete.component.vue";
+import  {MycarsApiService} from "../services/mycars-api-service";
 
     export default {
         name: "car.component",
         components: {
-            CarCompleteComponent
+            CarCompleteComponent,
+        },
+        data(){
+            return{
+                carsService: null
+            }
         },
         props: [
             "carInfo"
-        ]
+        ],
+        methods:{
+            deleteCar(idCar){
+               this.carsService = new MycarsApiService()
+                this.carsService.deleteById(idCar).then((response) => {
+                    console.log(response);
+                })
+                this.$emit("clicked", idCar);
+            }
+        }
     }
 
 </script>

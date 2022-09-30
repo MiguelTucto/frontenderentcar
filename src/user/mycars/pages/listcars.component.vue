@@ -1,7 +1,7 @@
 <template>
     <ul class = "container">
         <li v-for = "car in listdata">
-            <CarComponent :carInfo = "car"  />
+            <CarComponent :carInfo = "car" @clicked = "onClickChild"   />
         </li>
     </ul>
 </template>
@@ -17,7 +17,12 @@
         },
         props:[
             "listdata"
-        ]
+        ],
+        methods: {
+            onClickChild(idCar){
+                this.$emit("clickedSecond", idCar);
+            }
+        }
     }
 </script>
 

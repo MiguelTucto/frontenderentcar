@@ -5,7 +5,7 @@ export class MycarsApiService{
         return http.get(`/cars/user/${id}`);
     }
     deleteById(id){
-        return http.delete(`cars/?userId=${id}`)
+        return http.delete(`cars/${id}`)
     }
 }
 

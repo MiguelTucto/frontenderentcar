@@ -1,7 +1,7 @@
 <template>
     <NavbarComponent />
     <h1>My cars</h1>
-    <ListcarsComponent :listdata = "cars" />
+    <ListcarsComponent @clickedSecond = "onClickChildParent" :listdata = "cars" />
 </template>
 
 <script>
@@ -29,6 +29,11 @@ export default {
             this.cars = response.data.content;
             console.log(response);
         })
+    },
+    methods: {
+        onClickChildParent(idCar){
+            this.cars = this.cars.filter(car => car.id != idCar);
+        }
     }
 }
 
