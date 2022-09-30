@@ -10,6 +10,9 @@ export class FavouritesApiService{
     getInfoCarById(id){
         return http.get(`/cars/${id}`);
     }
+    deleteById(id){
+        return http.delete(`/favourites/${id}`);
+    }
 }
 
 export default new FavouritesApiService();

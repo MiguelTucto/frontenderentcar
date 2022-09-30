@@ -8,6 +8,7 @@ export const userStore = defineStore( {
     lastName: '',
     address: '',
     imageUrl: '',
+    typeOfUser: '',
     phone: '',
     email: '',
     password: ''
@@ -20,6 +21,7 @@ export const userStore = defineStore( {
       this.address = user.address;
       this.imageUrl = user.imageUrl;
       this.phone = user.phone;
+      this.typeOfUser = user.typeOfUser;
       this.email = user.email;
       this.password = user.password;
     },
@@ -28,6 +30,7 @@ export const userStore = defineStore( {
       this.lastName = '',
       this.address = '',
       this.imageUrl = '',
+      this.typeOfUser = '',
       this.phone = '',
       this.email = '',
       this.password = ''

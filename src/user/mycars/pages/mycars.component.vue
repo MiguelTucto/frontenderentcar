@@ -1,5 +1,6 @@
 <template>
     <NavbarComponent />
+    <h1>My cars</h1>
     <ListcarsComponent :listdata = "cars" />
 </template>
 
@@ -34,5 +35,7 @@ export default {
 </script>
 
 <style scoped>
-
+    h1{
+        text-align: center;
+    }
 </style>

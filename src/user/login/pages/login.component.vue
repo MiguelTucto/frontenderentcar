@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="d-flex flex-column mt-5 container text-center align-content-center bg-blue-lighten-5 w-50 rounded-xl">
     <v-container>
-      <v-img src="src/assets/img/eRentCar-removebg-preview.png" max-width="200px" class="mx-auto mt-10">
+      <v-img src="https://i.postimg.cc/mrsLXChs/e-Rent-Car-removebg-preview.png" max-width="200px" class="mx-auto mt-10">
       </v-img>
     </v-container>
     <v-container>
@@ -13,8 +13,10 @@
         <label for="password" class="block text-900 front-medium mb-2">Password</label>
         <pv-input-text v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" class="w-full" />
         <small v-show="!v$.password.$model && submitted" class="p-error">Password is required.</small>
-        <pv-button type="submit" class="p-button-rounded" label="Login"/>
-        <pv-button @click="$router.push('/register')" label="Register" />
+          <div class = "container-buttons">
+              <pv-button type="submit" class="p-button mr-5" label="Login"/>
+              <pv-button @click="$router.push('/register')" label="Register" />
+          </div>
       </form>
     </v-container>
   </v-container>
@@ -93,5 +95,9 @@ export default {
 </script>
 
 <style scoped>
+.container-buttons{
+    margin-top: 15px;
+
+}
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <NavbarComponent />
     <div class = "flex-search">
-        <v-text-field label="Search your car..." v-model = "search" class = "styles-input"></v-text-field>
+        <v-text-field label="Search cars..." v-model = "search" class = "styles-input"></v-text-field>
         <v-btn depressed color="primary" @click = "searchCar" class = "ml-15">Search</v-btn>
     </div>
     <ul class = "container">
