@@ -15,11 +15,17 @@
         <v-card-actions>
             <CarCompleteComponent :carInfo = "carInfo"  />
             <v-btn
+                text
+                @click="this.deleteCar"
+            >
+                Update
+            </v-btn>
+            <v-btn
                 color="red lighten-2"
                 text
                 @click="this.deleteCar"
             >
-                Delete Reservation
+                Delete
             </v-btn>
         </v-card-actions>
     </v-card>

@@ -8,14 +8,14 @@
             <v-btn icon >
                 <v-icon @click="$router.push('/profile')">mdi-account</v-icon>
             </v-btn>
+            <div v-if = "this.user.typeOfUser == 'Arrendador'">
+                <v-btn icon>
+                    <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>
+                </v-btn>
+            </div>
             <div v-if = "this.user.typeOfUser == 'Arrendador' ">
                 <v-btn icon>
                     <v-icon  @click="$router.push('/add-car')">mdi-plus-circle</v-icon>
-                </v-btn>
-            </div>
-            <div v-if = "this.user.typeOfUser == 'Arrendatario'">
-                <v-btn icon>
-                    <v-icon  @click="$router.push('/mycars')">mdi-home</v-icon>
                 </v-btn>
             </div>
             <v-btn icon>

@@ -83,6 +83,7 @@ export default{
             const carService = new AddCarApiService();
             console.log(JSON.parse(JSON.stringify(this.car)))
             carService.create(this.user.id, JSON.parse(JSON.stringify(this.car))).then((response) => {
+                console.log("la", response)
                 alert("Car added successfully!!")
                 this.car = {
                     "address": "",
