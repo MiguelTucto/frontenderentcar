@@ -65,7 +65,7 @@ import Swal from "sweetalert2";
                         })
                         Swal.fire(
                             'Deleted!',
-                            'Your file has been deleted.',
+                            'Your car has been deleted.',
                             'success'
                         )
                     }

@@ -28,6 +28,12 @@
                                 class = "input-profile"
                             ></v-text-field>
                             <v-text-field
+                                label="Phone"
+                                v-model="user.phone"
+                                disabledhint="edit names"
+                                class = "input-profile"
+                            ></v-text-field>
+                            <v-text-field
                                 label="Email"
                                 v-model="user.email"
                                 disabledhint="edit names"
@@ -48,7 +54,7 @@
                                 required
                             ></v-text-field>
                             <v-card-actions class = "container-buttons">
-                                <v-btn style="color:white;background-color: #0869A6">Update</v-btn>
+                                <v-btn style="color:white;background-color: #0869A6" @click ="edit">Update</v-btn>
                                 <v-btn style="color:white;background-color: #0869A6" @click="close">Close</v-btn>
                             </v-card-actions>
 
@@ -76,16 +82,16 @@
             v-bind:src = "this.user.imageUrl"
         ></v-img>
 
-        <v-card-title>Name and lastname: {{this.user.name}} {{this.user.lastName}}</v-card-title>
+        <v-card-title>Name: {{this.user.name}} </v-card-title>
+        <v-card-title>LastName: {{this.user.lastName}} </v-card-title>
         <v-card-title>Email: {{this.user.email}}</v-card-title>
+        <v-card-title>Phone: {{this.user.phone}} </v-card-title>
         <v-divider class="mx-4"></v-divider>
-
-
         <v-card-actions>
             <v-btn
                 color="deep-purple lighten-2"
                 text
-                @click = "edit"
+                @click = "openDialog"
             >
                 Update info
             </v-btn>
@@ -97,6 +103,7 @@
 import NavbarComponent from "../../../components/navbar.component.vue";
 import UsersApiService from "@/user/subscription/services/users-api.service";
 import { userStore } from "@/user/login/stores/user-store";
+import Swal from "sweetalert2";
 
 export default {
   name: "profile.component",
@@ -118,8 +125,19 @@ export default {
     })
   },
     methods:{
-      edit(){
+      openDialog(){
           this.dialog = true;
+      },
+      edit(){
+            this.usersService.update(this.user.id, this.user).then((response) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Your info has been updated',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                this.dialog = false;
+            })
       },
         close(){
           this.dialog = false;

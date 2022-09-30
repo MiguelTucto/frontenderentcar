@@ -14,8 +14,8 @@
         <pv-input-text v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" class="w-full" />
         <small v-show="!v$.password.$model && submitted" class="p-error">Password is required.</small>
           <div class = "container-buttons">
-              <pv-button type="submit" class="p-button mr-5" label="Login"/>
-              <pv-button @click="$router.push('/register')" label="Register" />
+              <pv-button type="submit" class="p-button mr-5 size-100"  label="Login"/>
+              <pv-button @click="$router.push('/register')" class = "mt-5" label="Register" />
           </div>
       </form>
     </v-container>
@@ -97,7 +97,16 @@ export default {
 <style scoped>
 .container-buttons{
     margin-top: 15px;
-
+}
+@media screen and (min-width: 320px) and (max-width: 540px){
+    .container-buttons{
+        display: flex;
+        height: 100px;
+        flex-direction: column;
+    }
+    .size-100{
+        width: 100%;
+    }
 }
 
 </style>

@@ -21,36 +21,78 @@
                     <v-row align="center" class="mx-0"></v-row>
                     <div class="container">
                         <div>
-                            <label for="">Address: </label>
-                            <input  type="text" v-model = carInfo.address>
-                            <label for="">Brand: </label>
-                            <input  type="text" v-model = carInfo.brand>
-                            <label for="">Year: </label>
-                            <input  type="number" v-model = carInfo.year>
-                            <label for="">Model: </label>
-                            <input type="text" v-model = carInfo.model>
-                            <label for="">Milage: </label>
-                            <input type="number" v-model = carInfo.mileage>
-                            <label for="">Seating: </label>
-                            <input  type="number" v-model = carInfo.seating>
-                            <label for="">Manual: </label>
-                            <input type="text" v-model = carInfo.manual>
+                            <v-text-field
+                                label="Address"
+                                v-model = "carInfo.address"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Brand"
+                                v-model = "carInfo.brand"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Year"
+                                v-model = "carInfo.year"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Model"
+                                v-model = "carInfo.model"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Milage"
+                                v-model = "carInfo.milage"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Seating"
+                                v-model = "carInfo.seating"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Manual"
+                                v-model = "carInfo.manual"
+                                disabledhint="edit names">
+                            </v-text-field>
                         </div>
                         <div>
-                            <label  for="">Value in dollars: </label>
-                            <input  type="number" v-model = carInfo.carValueInDollars >
-                            <label for="">Extra information: </label>
-                            <input  type="text" v-model = carInfo.extraInformation>
-                            <label for="">Rate: </label>
-                            <input  type="number" v-model = carInfo.rate>
-                            <label for="">Amount day: </label>
-                            <input  type="number" v-model = carInfo.rentAmountDay>
-                            <label for="">URL: </label>
-                            <input  type="text" v-model = carInfo.imagePath>
-                            <label for="">Category: </label>
-                            <input  type="text" v-model = carInfo.category>
-                            <label for="">Mechanic conditions: </label>
-                            <input type="text" v-model = carInfo.mechanicConditions>
+                            <v-text-field
+                                label="Value in dollars"
+                                v-model = "carInfo.carValueInDollars"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Extra information"
+                                v-model = "carInfo.extraInformation"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Rate"
+                                v-model = "carInfo.rate"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Amount day"
+                                v-model = "carInfo.rentAmountDay"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="URL"
+                                v-model = "carInfo.imagePath"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Category"
+                                v-model = "carInfo.category"
+                                disabledhint="edit names">
+                            </v-text-field>
+                            <v-text-field
+                                label="Mechanic conditions"
+                                v-model = "carInfo.mechanicConditions"
+                                disabledhint="edit names">
+                            </v-text-field>
                         </div>
                     </div>
                 </v-card-text>

@@ -4,37 +4,79 @@
     <div class="container-add-car">
         <div class = "form">
             <div class = container-cars-items>
-                <div>
-                    <label for="">Address: </label>
-                    <input v-model = "this.car.address" type="text">
-                    <label for="">Brand: </label>
-                    <input v-model = "this.car.brand" type="text">
-                    <label for="">Year: </label>
-                    <input v-model = "this.car.year" type="number">
-                    <label for="">Model: </label>
-                    <input v-model = "this.car.model" type="text">
-                    <label for="">Milage: </label>
-                    <input v-model = "this.car.mileage" type="number">
-                    <label for="">Seating: </label>
-                    <input v-model = "this.car.seating" type="number">
-                    <label for="">Manual: </label>
-                    <input v-model = "this.car.manual" type="text">
+                <div class = "container-inputs">
+                    <v-text-field
+                        label="Address"
+                        v-model = "this.car.address"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Brand"
+                        v-model = "this.car.brand"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Year"
+                        v-model = "this.car.year"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Model"
+                        v-model = "this.car.model"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Milage"
+                        v-model = "this.car.milage"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Seating"
+                        v-model = "this.car.seating"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Manual"
+                        v-model = "this.car.manual"
+                        disabledhint="edit names">
+                    </v-text-field>
                 </div>
-                <div>
-                    <label  for="">Value in dollars: </label>
-                    <input v-model = "this.car.carValueInDollars" type="number">
-                    <label for="">Extra information: </label>
-                    <input v-model = "this.car.extraInformation" type="text">
-                    <label for="">Rate: </label>
-                    <input v-model = "this.car.rate" type="number">
-                    <label for="">Amount day: </label>
-                    <input v-model = "this.car.rentAmountDay" type="number">
-                    <label for="">URL: </label>
-                    <input v-model = "this.car.imagePath" type="text">
-                    <label for="">Category: </label>
-                    <input v-model = "this.car.category" type="text">
-                    <label for="">Mechanic conditions: </label>
-                    <input v-model = "this.car.mechanicConditions" type="text">
+                <div class = "container-inputs">
+                    <v-text-field
+                        label="Value in dollars"
+                        v-model = "this.car.carValueInDollars"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Extra information"
+                        v-model = "this.car.extraInformation"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Rate"
+                        v-model = "this.car.rate"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Amount day"
+                        v-model = "this.car.rentAmountDay"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="URL"
+                        v-model = "this.car.imagePath"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Category"
+                        v-model = "this.car.category"
+                        disabledhint="edit names">
+                    </v-text-field>
+                    <v-text-field
+                        label="Mechanic conditions"
+                        v-model = "this.car.mechanicConditions"
+                        disabledhint="edit names">
+                    </v-text-field>
                 </div>
             </div>
             <div class="container-button">
@@ -47,6 +89,7 @@
 import NavbarComponent from "../../../components/navbar.component.vue";
 import {AddCarApiService} from "../services/addcar-api-service";
 import { userStore } from "@/user/login/stores/user-store";
+import Swal from "sweetalert2";
 
 
 export default{
@@ -81,10 +124,13 @@ export default{
     methods:{
         createCar(){
             const carService = new AddCarApiService();
-            console.log(JSON.parse(JSON.stringify(this.car)))
             carService.create(this.user.id, JSON.parse(JSON.stringify(this.car))).then((response) => {
-                console.log("la", response)
-                alert("Car added successfully!!")
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Car created!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 this.car = {
                     "address": "",
                     "brand": "",
@@ -102,7 +148,6 @@ export default{
                     "mechanicConditions": ""
                 }
             })
-            console.log("Wii", this.user.id)
         }
     }
 }
@@ -111,6 +156,9 @@ export default{
 <style>
 .title{
     text-align: center;
+}
+.container-inputs{
+    width: 200px;
 }
 .container-add-car{
     display: flex;
