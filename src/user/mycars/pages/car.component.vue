@@ -33,6 +33,7 @@
 <script>
 import CarCompleteComponent from "./carcomplete.component.vue";
 import  {MycarsApiService} from "../services/mycars-api-service";
+import Swal from "sweetalert2";
 
     export default {
         name: "car.component",
@@ -50,10 +51,27 @@ import  {MycarsApiService} from "../services/mycars-api-service";
         methods:{
             deleteCar(idCar){
                this.carsService = new MycarsApiService()
-                this.carsService.deleteById(idCar).then((response) => {
-                    console.log(response);
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.carsService.deleteById(idCar).then((response) => {
+                            console.log(response);
+                            this.$emit("clicked", idCar);
+                        })
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
                 })
-                this.$emit("clicked", idCar);
             }
         }
     }

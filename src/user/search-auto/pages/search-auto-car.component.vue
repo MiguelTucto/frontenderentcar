@@ -14,8 +14,10 @@
         <v-divider class="mx-4"></v-divider>
         <v-card-actions>
             <CarCompleteComponent :carInfo = "carInfo"  />
-            <v-btn text>Reserve</v-btn>
-            <v-btn text @click = "addFavourites(user.id, carInfo.id)">Favorites</v-btn>
+            <div v-if = "user.typeOfUser == 'Arrendatario'">
+                <v-btn text>Reserve</v-btn>
+                <v-btn text @click = "addFavourites(user.id, carInfo.id)">Favorites</v-btn>
+            </div>
         </v-card-actions>
     </v-card>
 </template>
