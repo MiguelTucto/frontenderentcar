@@ -7,6 +7,9 @@ export class MycarsApiService{
     deleteById(id){
         return http.delete(`cars/${id}`)
     }
+    updateById(carId, data){
+        return http.put(`cars/${carId}`, data)
+    }
 }
 
 export default new MycarsApiService();

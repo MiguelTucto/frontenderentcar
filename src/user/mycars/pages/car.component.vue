@@ -14,11 +14,7 @@
         <v-divider class="mx-4"></v-divider>
         <v-card-actions>
             <CarCompleteComponent :carInfo = "carInfo"  />
-            <v-btn
-                text
-            >
-                Update
-            </v-btn>
+            <CarUpdateComponent :carInfo = "carInfo" />
             <v-btn
                 color="red lighten-2"
                 text
@@ -32,6 +28,7 @@
 
 <script>
 import CarCompleteComponent from "./carcomplete.component.vue";
+import CarUpdateComponent from "./carupdate.component.vue";
 import  {MycarsApiService} from "../services/mycars-api-service";
 import Swal from "sweetalert2";
 
@@ -39,6 +36,7 @@ import Swal from "sweetalert2";
         name: "car.component",
         components: {
             CarCompleteComponent,
+            CarUpdateComponent
         },
         data(){
             return{

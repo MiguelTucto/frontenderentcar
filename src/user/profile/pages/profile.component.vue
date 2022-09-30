@@ -14,31 +14,41 @@
                             sm="6"
                             md="4"
                         >
+                            <h2 class = "ml-2 mb-2">Edit Profile</h2>
                             <v-text-field
                                 label="Name"
-                                v-model="edit_names"
+                                v-model="user.name"
                                 disabledhint="edit names"
+                                class = "input-profile"
                             ></v-text-field>
                             <v-text-field
                                 label="LastName"
-                                v-model="edit_names"
+                                v-model="user.lastName"
                                 disabledhint="edit names"
+                                class = "input-profile"
                             ></v-text-field>
                             <v-text-field
                                 label="Email"
-                                v-model="edit_names"
+                                v-model="user.email"
                                 disabledhint="edit names"
+                                class = "input-profile"
                             ></v-text-field>
-
+                            <v-text-field
+                                label="Password"
+                                v-model="user.password"
+                                disabledhint="edit names"
+                                class = "input-profile"
+                            ></v-text-field>
 
                             <v-text-field
                                 label="Image profile"
-                                v-model="edit_url_image"
+                                v-model="user.imageUrl"
                                 disabledhint="edit names"
+                                class = "input-profile"
                                 required
                             ></v-text-field>
-                            <v-card-actions>
-                                <v-btn style="color:white;background-color: #0869A6" @click="update(edit_names,edit_address,edit_cellphone,edit_url_image)">Update</v-btn>
+                            <v-card-actions class = "container-buttons">
+                                <v-btn style="color:white;background-color: #0869A6">Update</v-btn>
                                 <v-btn style="color:white;background-color: #0869A6" @click="close">Close</v-btn>
                             </v-card-actions>
 
@@ -119,5 +129,12 @@ export default {
 </script>
 
 <style scoped>
-
+.input-profile{
+    width: 530px;
+}
+.container-buttons{
+    width: 540px;
+    display: flex;
+    justify-content: center;
+}
 </style>
