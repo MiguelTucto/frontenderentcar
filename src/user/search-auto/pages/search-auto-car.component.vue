@@ -49,6 +49,9 @@ export default {
                 console.log("Added correctly!");
             })
             console.log(userId, carId);
+        },
+        addCarsRents(userId, carId){
+
         }
     }
 }

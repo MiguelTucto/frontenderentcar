@@ -27,14 +27,12 @@
                 disabledhint="edit names"
                 required
               ></v-text-field>
-
               <v-text-field
                 label="cellphone"
                 v-model="edit_cellphone"
                 disabledhint="edit names"
                 required
               ></v-text-field>
-
               <v-text-field
                 label="image"
                 v-model="edit_url_image"

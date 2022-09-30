@@ -63,7 +63,7 @@
 
         <v-img
             height="250"
-            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+            v-bind:src = "this.user.imageUrl"
         ></v-img>
 
         <v-card-title>Name and lastname: {{this.user.name}} {{this.user.lastName}}</v-card-title>

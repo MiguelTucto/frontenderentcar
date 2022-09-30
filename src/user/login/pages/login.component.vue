@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="d-flex flex-column mt-5 container text-center align-content-center bg-blue-lighten-5 w-50 rounded-xl">
     <v-container>
-      <v-img src="src/assets/img/eRentCar-removebg-preview.png" max-width="200px" class="mx-auto mt-10">
+      <v-img src="https://i.postimg.cc/mrsLXChs/e-Rent-Car-removebg-preview.png" max-width="200px" class="mx-auto mt-10">
       </v-img>
     </v-container>
     <v-container>

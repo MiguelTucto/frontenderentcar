@@ -2,7 +2,7 @@
     <v-card>
         <v-toolbar color = "blue lighten-2">
             <v-toolbar-title>
-                <v-img src="src/assets/img/eRentCar-removebg-preview.png" class = "style-logo"></v-img>
+                <v-img src="https://i.postimg.cc/mrsLXChs/e-Rent-Car-removebg-preview.png" class = "style-logo"></v-img>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon >
