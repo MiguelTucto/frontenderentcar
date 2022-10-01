@@ -58,6 +58,7 @@ export default {
         name: this.formObject.name,
         lastName: this.formObject.lastName,
         imageUrl: this.formObject.imageUrl,
+        typeOfUser: this.formObject.typeOfUser,
         phone: this.formObject.phone,
         email: this.formObject.secondStepDetail.email,
         password: this.formObject.secondStepDetail.password

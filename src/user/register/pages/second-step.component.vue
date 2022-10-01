@@ -17,7 +17,7 @@
             </div>
             <div class="flex justify-space-between mt-5">
               <pv-button icon="pi pi-arrow-left" label="Back" class="p-button-link" @click="prevPage" />
-              <pv-button label="Submit" class="p-button-rounded " type="submit"/>
+              <pv-button  icon="pi pi-arrow-right" iconPos="right" label="Continue" class="p-button-rounded " type="submit"/>
             </div>
           </form>
         </template>

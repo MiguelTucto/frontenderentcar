@@ -14,6 +14,9 @@
               <label for="lastName" class="block text-900 font-medium mb-2">Last Name</label>
               <pv-input-text v-model="lastName" :class="{ 'p-invalid': v$.lastName.$invalid && submitted }" class="w-full"/>
               <small v-show="!v$.lastName.$model && submitted" class="p-error">Last Name is required.</small>
+              <label for="typeOfUser" class="block text-900 font-medium mb-2" >Type Of User</label>
+              <pv-input-text v-model="typeOfUser" :class="{ 'p-invalid': v$.typeOfUser.$invalid && submitted }" class="w-full" aria-describedby="typeOfUser"/>
+              <small v-show="!v$.name.$model && submitted" class="p-error">Type Of User is required.</small>
               <label for="imageUrl" class="block text-900 font-medium mb-2">Image URL</label>
               <pv-input-text v-model="imageUrl" :class="{ 'p-invalid': v$.imageUrl.$invalid && submitted }" class="w-full"/>
               <small v-show="!v$.imageUrl.$model && submitted" class="p-error">Image URL is required.</small>
@@ -23,7 +26,7 @@
             </div>
             <div class="flex justify-space-between mt-5">
               <pv-button icon="pi pi-car" label="Go to eRentCar" class="p-button-link" @click="$router.push('/login')" />
-              <pv-button label="Submit" class="p-button-rounded" type="submit" />
+              <pv-button icon="pi pi-arrow-right" iconPos="right" label="Continue" class="p-button-rounded" type="submit" />
             </div>
           </form>
         </template>
@@ -41,11 +44,12 @@ export default {
   name: "first-step.component",
   setup: () => ({ v$: useVuelidate() }),
   data() {
-    return{
+    return {
       submitted: false,
       name: "",
       lastName: "",
       imageUrl: "",
+      typeOfUser: "",
       phone: null,
       user: {},
       users: []
@@ -57,6 +61,9 @@ export default {
         required,
       },
       lastName: {
+        required,
+      },
+      typeOfUser: {
         required,
       },
       imageUrl: {
@@ -74,6 +81,7 @@ export default {
           formData: {
             name: this.name,
             lastName: this.lastName,
+            typeOfUser: this.typeOfUser,
             imageUrl: this.imageUrl,
             phone: this.phone
           },
