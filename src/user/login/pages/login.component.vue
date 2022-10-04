@@ -7,18 +7,15 @@
     <v-container class="d">
       <h2 class="">Welcome to eRentCar</h2>
       <form @submit.prevent="handleSubmit(!v$.$invalid)">
-        <div class="p-input-icon-right">
-          <i class="pi pi-user mt-1"/>
-          <label for="email" class="block text-900 front-medium mb-2">Email</label>
-          <pv-input-text v-model="email" :class="{ 'p-invalid': v$.email.$invalid && submitted }" class="p-inputtext-sm" />
-          <small v-show="!v$.email.$model && submitted" class="p-error">Email is required.</small>
-        </div>
+        <label for="email" class="block text-900 front-medium mb-2">Email</label>
+        <pv-input-text id="loginEmail" v-model="email" :class="{ 'p-invalid': v$.email.$invalid && submitted }" class="w-full" />
+        <small v-show="!v$.email.$model && submitted" class="p-error">Email is required.</small>
         <label for="password" class="block text-900 front-medium mb-2">Password</label>
-        <pv-password v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" class="" :feedback="false"/>
+        <pv-input-text id="loginPassword" v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" class="w-full" :feedback="false"/>
         <small v-show="!v$.password.$model && submitted" class="p-error">Password is required.</small>
         <div class = "container-buttons">
           <pv-button icon="pi pi-car" type="submit" class="p-button mr-5 size-100"  label="Login"/>
-          <pv-button icon="pi pi-arrow-right" iconPos="right" @click="$router.push('/register')" class = "p-button-secondary" label="Register" />
+          <pv-button icon="pi pi-arrow-right" iconPos="right" @click="$router.push('/register')" class = "p-button-secondary button" label="Register" />
         </div>
       </form>
     </v-container>
@@ -106,7 +103,11 @@ export default {
         display: flex;
         height: 100px;
         flex-direction: column;
+
     }
+  .button{
+    margin-top: 15px;
+  }
     .size-100{
         width: 100%;
     }

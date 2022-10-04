@@ -6,11 +6,13 @@
             <div class = container-cars-items>
                 <div class = "container-inputs">
                     <v-text-field
+                        id="createAddress"
                         label="Address"
                         v-model = "this.car.address"
                         disabledhint="edit names">
                     </v-text-field>
                     <v-text-field
+                        id="createBrand"
                         label="Brand"
                         v-model = "this.car.brand"
                         disabledhint="edit names">

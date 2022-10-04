@@ -19,7 +19,7 @@
                 </v-btn>
             </div>
             <div v-if = "this.user.typeOfUser == 'Arrendador' ">
-                <v-btn icon>
+                <v-btn icon id="addBtn">
                     <v-icon  @click="$router.push('/add-car')">mdi-plus-circle</v-icon>
                 </v-btn>
             </div>
