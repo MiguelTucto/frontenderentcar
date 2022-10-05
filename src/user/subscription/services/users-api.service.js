@@ -1,21 +1,21 @@
 import http from "../../../core/services/http-common";
 
-class UsersApiService{
+class UsersApiService {
   getEmailAndPassword(email, password) {
     return http.post(`/users/login`, {
       email: email,
-      password: password
+      password: password,
     });
   }
-  create(data){
+  create(data) {
     return http.post(`/users`, data);
   }
-  update(id, data){
+  update(id, data) {
     return http.put(`/users/${id}`, data);
   }
-  getById(id){
+  getById(id) {
     return http.get(`/users/${id}`);
   }
 }
 
-export default new UsersApiService
+export default new UsersApiService();

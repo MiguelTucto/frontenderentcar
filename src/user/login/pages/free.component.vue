@@ -5,10 +5,8 @@
 <script>
 export default {
   name: "free.component",
-  data() {}
+  data() {},
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

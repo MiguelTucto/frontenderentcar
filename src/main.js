@@ -13,6 +13,7 @@ import "primeicons/primeicons.css";
 // PrimeFlex Companion
 import "primeflex/primeflex.css";
 
+import Badge from "primevue/badge";
 import Panel from "primevue/panel";
 import MultiSelect from "primevue/multiselect";
 import Fieldset from "primevue/fieldset";
@@ -45,12 +46,12 @@ import Chip from "primevue/chip";
 import ToastService from "primevue/toastservice";
 import { loadFonts } from "@/plugins/webfontloader";
 
-loadFonts()
+loadFonts();
 
 const app = createApp(App);
-const pinia = createPinia()
-pinia.use(PiniaPluginPersistedState)
-app.config.devtools = true
+const pinia = createPinia();
+pinia.use(PiniaPluginPersistedState);
+app.config.devtools = true;
 app.use(router);
 app.use(vuetify);
 app.use(pinia);
@@ -60,6 +61,7 @@ app.use(PrimeVue, { ripple: true });
 app.use(ToastService);
 
 // PrimeVue Components
+app.component("pv-badge", Badge);
 app.component("pv-panel", Panel);
 app.component("pv-multi-select", MultiSelect);
 app.component("pv-field", Fieldset);

@@ -13,7 +13,7 @@ const router = createRouter({
         {
           path: "/login",
           name: "Login",
-          component: () => import("../user/login/pages/login.component.vue")
+          component: () => import("../user/login/pages/login.component.vue"),
         },
         {
           path: "/register",
@@ -24,54 +24,59 @@ const router = createRouter({
               path: "/register",
               name: "FirstStep",
               props: true,
-              component: () => import("../user/register/pages/first-step.component.vue")
+              component: () =>
+                import("../user/register/pages/first-step.component.vue"),
             },
             {
               path: "/register/secondstep",
               name: "SecondStep",
               props: true,
-              component: () => import("../user/register/pages/second-step.component.vue")
+              component: () =>
+                import("../user/register/pages/second-step.component.vue"),
             },
             {
               path: "/register/laststep",
               name: "LastStep",
               props: true,
-              component: () => import("../user/register/pages/last-step.component.vue")
-            }
-          ]
-        }
-      ]
+              component: () =>
+                import("../user/register/pages/last-step.component.vue"),
+            },
+          ],
+        },
+      ],
     },
     {
       path: "/mycars",
       name: "cars",
-      component: () => import("../user/mycars/pages/mycars.component.vue")
+      component: () => import("../user/mycars/pages/mycars.component.vue"),
     },
     {
       path: "/search-auto",
       name: "SearchAuto",
-      component: () => import("../user/search-auto/pages/search-auto.component.vue")
+      component: () =>
+        import("../user/search-auto/pages/search-auto.component.vue"),
     },
     {
       path: "/profile",
       name: "Profile",
-      component: () => import("../user/profile/pages/profile.component.vue")
+      component: () => import("../user/profile/pages/profile.component.vue"),
     },
     {
       path: "/favourite",
       name: "Favourite",
-      component: () => import("../user/favourites/pages/my-favourites.component.vue")
+      component: () =>
+        import("../user/favourites/pages/my-favourites.component.vue"),
     },
     {
       path: "/add-car",
       name: "AddCar",
-      component: () => import("../user/add-car/pages/addcar.component.vue")
+      component: () => import("../user/add-car/pages/addcar.component.vue"),
     },
     {
       path: "/rents",
       name: "Rents",
-      component: () => import("../user/rents/pages/rents.component.vue")
-    }
+      component: () => import("../user/rents/pages/rents.component.vue"),
+    },
   ],
 });
 

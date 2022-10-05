@@ -1,14 +1,20 @@
 <template>
-<div>
-  <div clasS="card">
-    <pv-steps class="mt-8 mb-8" :model="items" :readonly="true" />
+  <div>
+    <div clasS="card">
+      <pv-steps class="mt-8 mb-8" :model="items" :readonly="true" />
+    </div>
+    <router-view
+      v-slot="{ Component }"
+      :formData="formObject"
+      @next-page="nextPage($event)"
+      @prev-page="prevPage($event)"
+      @complete="complete"
+    >
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
-  <router-view v-slot="{ Component }" :formData="formObject" @next-page="nextPage($event)" @prev-page="prevPage($event)" @complete="complete">
-    <keep-alive>
-      <component :is="Component" />
-    </keep-alive>
-  </router-view>
-</div>
 </template>
 
 <script>
@@ -21,20 +27,20 @@ export default {
       items: [
         {
           label: "Personal Information",
-          to: "/register"
+          to: "/register",
         },
         {
           label: "Email & Password",
-          to: "/register/secondstep"
+          to: "/register/secondstep",
         },
         {
           label: "Term & Conditions",
-          to: "/register/laststep"
-        }
+          to: "/register/laststep",
+        },
       ],
       formObject: {},
-      errors: []
-    }
+      errors: [],
+    };
   },
   methods: {
     nextPage(event) {
@@ -61,7 +67,7 @@ export default {
         typeOfUser: this.formObject.typeOfUser,
         phone: this.formObject.phone,
         email: this.formObject.secondStepDetail.email,
-        password: this.formObject.secondStepDetail.password
+        password: this.formObject.secondStepDetail.password,
       };
       this.createUser(user);
     },
@@ -71,16 +77,14 @@ export default {
         .then(() => {
           window.alert("Wu-uu!");
           localStorage.removeItem("formObject");
-         this.$router.push({ name: "Login" });
+          this.$router.push({ name: "Login" });
         })
         .catch((error) => {
           console.log(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

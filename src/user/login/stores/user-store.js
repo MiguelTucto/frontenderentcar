@@ -1,17 +1,17 @@
 import { defineStore } from "pinia";
 
-export const userStore = defineStore( {
-  id: 'user',
+export const userStore = defineStore({
+  id: "user",
   state: () => ({
-    id: '',
-    name: '',
-    lastName: '',
-    address: '',
-    imageUrl: '',
-    typeOfUser: '',
-    phone: '',
-    email: '',
-    password: ''
+    id: "",
+    name: "",
+    lastName: "",
+    address: "",
+    imageUrl: "",
+    typeOfUser: "",
+    phone: "",
+    email: "",
+    password: "",
   }),
   actions: {
     setUser(user) {
@@ -26,16 +26,16 @@ export const userStore = defineStore( {
       this.password = user.password;
     },
     logout() {
-      this.name = '',
-      this.lastName = '',
-      this.address = '',
-      this.imageUrl = '',
-      this.typeOfUser = '',
-      this.phone = '',
-      this.email = '',
-      this.password = ''
-    }
+      (this.name = ""),
+        (this.lastName = ""),
+        (this.address = ""),
+        (this.imageUrl = ""),
+        (this.typeOfUser = ""),
+        (this.phone = ""),
+        (this.email = ""),
+        (this.password = "");
+    },
   },
   getters: {},
-  persist: true
-})
+  persist: true,
+});

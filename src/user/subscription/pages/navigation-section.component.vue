@@ -4,10 +4,8 @@
 
 <script>
 export default {
-  name: "navigation-section"
+  name: "navigation-section",
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
