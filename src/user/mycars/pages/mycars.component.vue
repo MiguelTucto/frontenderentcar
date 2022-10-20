@@ -1,7 +1,9 @@
 <template>
-  <NavbarComponent />
-  <h1>My cars</h1>
-  <ListcarsComponent @clickedSecond="onClickChildParent" :listdata="cars" />
+    <NavbarComponent />
+    <div class="text-900 p-3 text-center">
+      <h1>My Cars</h1>
+    </div>
+    <ListcarsComponent @clickedSecond="onClickChildParent" :listdata="cars" />
 </template>
 
 <script>
@@ -38,7 +40,4 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
 </style>

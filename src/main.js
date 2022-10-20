@@ -13,6 +13,8 @@ import "primeicons/primeicons.css";
 // PrimeFlex Companion
 import "primeflex/primeflex.css";
 
+import SpeedDial from "primevue/speeddial";
+import Tooltip from "primevue/tooltip";
 import Badge from "primevue/badge";
 import Panel from "primevue/panel";
 import MultiSelect from "primevue/multiselect";
@@ -43,6 +45,8 @@ import AutoComplete from "primevue/autocomplete";
 import DataViewLayoutOptions from "primevue/dataviewlayoutoptions";
 import Checkbox from "primevue/checkbox";
 import Chip from "primevue/chip";
+import Menu from "primevue/menu";
+import SplitButton from "primevue/splitbutton";
 import ToastService from "primevue/toastservice";
 import { loadFonts } from "@/plugins/webfontloader";
 
@@ -55,12 +59,16 @@ app.config.devtools = true;
 app.use(router);
 app.use(vuetify);
 app.use(pinia);
+app.directive("tooltip", Tooltip);
 
 // PrimeVue Services
 app.use(PrimeVue, { ripple: true });
 app.use(ToastService);
 
 // PrimeVue Components
+app.component("pv-menu", Menu);
+app.component("pv-split-button", SplitButton);
+app.component("pv-speed-dial", SpeedDial);
 app.component("pv-badge", Badge);
 app.component("pv-panel", Panel);
 app.component("pv-multi-select", MultiSelect);
