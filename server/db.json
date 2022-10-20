@@ -1,0 +1,104 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "example",
+      "name": "Juan",
+      "password": "example",
+      "planId": 1
+    },
+    {
+      "id": 2,
+      "name": "Carlos",
+      "email": "example2",
+      "password": "example2",
+      "planId": 2
+    },
+    {
+      "id": 3,
+      "name": "Enrique",
+      "email": "example3",
+      "password": "example3",
+      "planId": 1
+    }
+  ],
+  "plans": [
+    {
+      "id": 1,
+      "name": "Basic Plan",
+      "price": 300,
+      "description": "It's a Basic plan"
+    },
+    {
+      "id": 2,
+      "name": "Gold Plan",
+      "price": 400,
+      "description": "It's a Gold plan"
+    },
+    {
+      "id": 3,
+      "name": "Premium Plan",
+      "price": 500,
+      "description": "It's a Premium plan"
+    }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "address": "Miraflores, Lima - Perú",
+      "brand": "Toyota",
+      "year": 2010,
+      "model": "string",
+      "mileage": 200,
+      "seating": 5,
+      "manual": true,
+      "carValueInDollars": 10000,
+      "extraInformation": "It's a good car!",
+      "rate": 150,
+      "rentAmountDay": 100,
+      "imagePath": "https://www.toyota.com/imgix/content/dam/toyota/jellies/max/2022/rav4/hybridse/4524/8w2/2.png?fm=webp&bg=white&w=768&h=328&q=90",
+      "category": "LITTLE",
+      "mechanicConditions": "REGULAR",
+      "clientId": 1,
+      "carModelId": 1
+    },
+    {
+      "id": 2,
+      "address": "San Juan, Lima - Perú",
+      "brand": "Toyota",
+      "year": 2015,
+      "model": "string",
+      "mileage": 250,
+      "seating": 2,
+      "manual": true,
+      "carValueInDollars": 5000,
+      "extraInformation": "It's a good car!",
+      "rate": 150,
+      "rentAmountDay": 50,
+      "imagePath": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-toyota-tundra-trd-pro-exterior-front-quarter-1632213050.jpg",
+      "category": "LITTLE",
+      "mechanicConditions": "REGULAR",
+      "clientId": 1,
+      "carModelId": 1
+    },
+    {
+      "id": 3,
+      "address": "Surco, Lima - Perú",
+      "brand": "Tesla",
+      "year": 2019,
+      "model": "string",
+      "mileage": 500,
+      "seating": 4,
+      "manual": true,
+      "carValueInDollars": 20000,
+      "extraInformation": "It's a good car, the best!",
+      "rate": 300,
+      "rentAmountDay": 250,
+      "imagePath": "https://tesla-cdn.thron.com/delivery/public/image/tesla/3863f3e5-546a-4b22-bcbc-1f8ee0479744/bvlatuR/std/1200x628/MX-Social",
+      "category": "LITTLE",
+      "mechanicConditions": "REGULAR",
+      "clientId": 2,
+      "carModelId": 1
+    }
+  ]
+}
