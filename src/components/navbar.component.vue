@@ -9,6 +9,7 @@
       </template>
       <template #end>
         <div class="flex flex-row gap-3" id="sidebar">
+          <li>Bienvenido {{this.user.name}}</li>
           <pv-button @click="$router.push('/profile')" icon="pi pi-user" class="p-button-rounded p-button-lg p-button-text hover:bg-blue-500 hover:text-white transition-duration-1000 hidden sm:inline-flex " v-tooltip.bottom="'Profile'" />
           <div class="md:hidden appearance-none">
             <pv-menu ref="menu" :model="items" :popup="true"/>
