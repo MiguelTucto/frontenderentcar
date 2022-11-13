@@ -41,6 +41,10 @@
           <h3 v-if="client.length === 1" class="pl-2">car publicated</h3>
           <h3 v-else class="pl-2">cars publicated</h3>
         </div>
+        <div class="flex flex-row justify-content-center align-items-center">
+          <pv-badge :value=" client.popularity " size="large" severity="warning"></pv-badge>
+          <h3 class="pl-2">Popularity</h3>
+        </div>
       </template>
     </pv-card>
   </pv-dialog>
