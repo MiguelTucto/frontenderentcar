@@ -135,7 +135,9 @@ export default {
         .then((response) => {
 
           us.setUser(response.data);
+
           this.$router.push({ name: "cars" });
+            this.$router.push({ name: "rents" });
 
         })
         .catch((e) => {
@@ -167,7 +169,14 @@ export default {
           .then((response) => {
 
             us.setUser(response.data);
-            this.$router.push({ name: "cars" });
+            console.log("DATA: ", response.data);
+              if(response.data.typeOfUser === "Arrendador"){
+                  this.$router.push("/mycars");
+              }
+              else{
+                  console.log("wII")
+                  this.$router.push("/rents" );
+              }
           })
           .catch((e) => {
             console.log(e);
