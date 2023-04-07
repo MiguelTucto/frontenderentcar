@@ -50,10 +50,8 @@
     <div
       class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center justify-content-center"
     >
-      <section>
-        <div class="text-center">
-          <div class="text-900 text-5xl font-bold">Welcome</div>
-          <div class="text-900 text-5xl font-bold">to</div>
+      <section class="">
+        <div class="text-center mb-3">
           <pv-img src="https://i.postimg.cc/mrsLXChs/e-Rent-Car-removebg-preview.png" height="50" class=""/>
         </div>
         <div>
@@ -70,7 +68,7 @@
                   </span>
               <pv-password id="loginPassword" v-model="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }" :feedback="false" toggleMask placeholder="Password" v-tooltip.right="'Put your password'"/>
             </div>
-            <div class = "flex  justify-content-between mt-4 ">
+            <div class = "flex  justify-content-between mt-3">
               <pv-button icon="pi pi-car" type="submit" class="p-button  "  label="Login"/>
               <pv-button icon="pi pi-arrow-right" iconPos="right" @click="$router.push('/register')" class = "p-button-secondary button" label="Register" />
             </div>
@@ -82,7 +80,7 @@
       <img
         src="https://images.pexels.com/photos/1974520/pexels-photo-1974520.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Image"
-        class="md:ml-auto block md:h-full"
+        class="md:ml-auto  block md:h-full"
         style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)"
       />
     </div>
