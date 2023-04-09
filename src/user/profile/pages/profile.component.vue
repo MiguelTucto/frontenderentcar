@@ -69,7 +69,7 @@
       </div>
     </v-card-text>
   </v-dialog>
-  <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+  <v-card  class="mx-auto my-12" max-width="374">
     <template v-slot:progress>
       <v-progress-linear
         color="deep-purple"

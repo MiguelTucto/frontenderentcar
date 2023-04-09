@@ -37,12 +37,15 @@
               <label for="typeOfUser" class="block text-900 font-medium mb-2"
                 >Type Of User</label
               >
-              <pv-input-text
+              <pv-dropdown
                 id="registerTypeOfUser"
                 v-model="typeOfUser"
                 :class="{ 'p-invalid': v$.typeOfUser.$invalid && submitted }"
                 class="w-full"
                 aria-describedby="typeOfUser"
+                type="text"
+                :options="optional"
+                optionLabel="name"
               />
               <small v-show="!v$.typeOfUser.$model && submitted" class="p-error"
                 >Type Of User is required.</small
@@ -66,6 +69,7 @@
                 id="registerPhone"
                 v-model="phone"
                 :class="{ 'p-invalid': v$.phone.$invalid && submitted }"
+                class="w-full"
               />
               <small v-show="!v$.phone.$model && submitted" class="p-error ml-2"
                 >Phone is required.</small
@@ -97,9 +101,12 @@
 import UsersApiService from "@/user/subscription/services/users-api.service";
 import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import { ref } from 'vue';
+
 
 export default {
   name: "first-step.component",
+  components: { },
   setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
@@ -111,6 +118,16 @@ export default {
       phone: null,
       user: {},
       users: [],
+      optional: ref([
+        {
+          name: 'Arrendatario',
+          code: 'AO'
+        },
+        {
+          name: 'Arrendador',
+          code: 'AR'
+        }
+      ])
     };
   },
   validations() {
@@ -138,7 +155,7 @@ export default {
         formData: {
           name: this.name,
           lastName: this.lastName,
-          typeOfUser: this.typeOfUser,
+          typeOfUser: this.typeOfUser.name,
           imageUrl: this.imageUrl,
           phone: this.phone,
         },

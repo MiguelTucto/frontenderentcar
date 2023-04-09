@@ -47,6 +47,12 @@ import Checkbox from "primevue/checkbox";
 import Chip from "primevue/chip";
 import Menu from "primevue/menu";
 import SplitButton from "primevue/splitbutton";
+import Avatar from 'primevue/avatar';
+import AvatarGroup from 'primevue/avatargroup';
+import Inplace from 'primevue/inplace';
+import CascadeSelect from 'primevue/cascadeselect';
+import ConfirmDialog from 'primevue/confirmdialog';
+import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from "primevue/toastservice";
 import { loadFonts } from "@/plugins/webfontloader";
 
@@ -59,6 +65,7 @@ app.config.devtools = true;
 app.use(router);
 app.use(vuetify);
 app.use(pinia);
+app.use(ConfirmationService);
 app.directive("tooltip", Tooltip);
 
 // PrimeVue Services
@@ -99,5 +106,10 @@ app.component("pv-autocomplete", AutoComplete);
 app.component("pv-chip", Chip);
 app.component("pv-upload", FileUpload);
 app.component("pv-data-view-layout-options", DataViewLayoutOptions);
+app.component("pv-avatar", Avatar);
+app.component("pv-avatar-group", AvatarGroup);
+app.component("pv-inplace", Inplace);
+app.component("pv-cascade", CascadeSelect);
+app.component("pv-confirm-dialog", ConfirmDialog);
 
 app.mount("#app");

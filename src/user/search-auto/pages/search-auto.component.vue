@@ -1,18 +1,13 @@
 <template>
   <NavbarComponent />
-  <div class="flex-search">
-    <v-text-field
-      label="Search cars..."
-      v-model="search"
-      class="styles-input"
-    ></v-text-field>
-    <pv-button @click="searchCar" label="Search" class="ml-3 p-button-secondary"></pv-button>
+  <div class="container text-center">
+    <h1>Find your dream car</h1>
+    <ul class="container">
+      <li v-for="car in cars">
+        <SearchAutoCarComponent :carInfo="car" />
+      </li>
+    </ul>
   </div>
-  <ul class="container">
-    <li v-for="car in cars">
-      <SearchAutoCarComponent :carInfo="car" />
-    </li>
-  </ul>
 </template>
 <script>
 import NavbarComponent from "../../../components/navbar.component.vue";

@@ -81,6 +81,16 @@ const router = createRouter({
       path: "/add",
       name: "Add",
       component: () => import("../user/add-car/pages/addcarv2.component.vue")
+    },
+    {
+      path: "/userprofile",
+      name: "userprofile",
+      component: () => import("../user/profile/pages/profilev2.component.vue")
+    },
+    {
+      path: "/errorpage",
+      name: "Error",
+      component: () => import("../components/notfound.component.vue")
     }
   ],
 });

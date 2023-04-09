@@ -51,7 +51,7 @@
       class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center justify-content-center"
     >
       <section class="">
-        <div class="text-center mb-3">
+        <div class="text-center mb-3 ">
           <pv-img src="https://i.postimg.cc/mrsLXChs/e-Rent-Car-removebg-preview.png" height="50" class=""/>
         </div>
         <div>
@@ -80,7 +80,7 @@
       <img
         src="https://images.pexels.com/photos/1974520/pexels-photo-1974520.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Image"
-        class="md:ml-auto  block md:h-full"
+        class="md:ml-auto   md:h-full"
         style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)"
       />
     </div>
@@ -88,12 +88,10 @@
 </template>
 
 <script>
-import UsersApiService from "@/user/subscription/services/users-api.service";
 import { userStore } from "@/user/login/stores/user-store";
 import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 import usersApiService from "@/user/subscription/services/users-api.service";
-import router from "@/router";
 
 export default {
   name: "login.component",
@@ -118,48 +116,14 @@ export default {
     };
   },
   methods: {
-    submit() {
-      this.form = { email: "", password: "" };
-    },
-    login(email, password) {
-      const us = userStore();
-      this.$toast.add({
-        severity: "success",
-        summary: "Success Message",
-        detail: "Message Content",
-        life: 3000,
-      });
-      UsersApiService.getEmailAndPassword(email, password)
-        .then((response) => {
-
-          us.setUser(response.data);
-
-          this.$router.push({ name: "cars" });
-            this.$router.push({ name: "rents" });
-
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    probando(){
-      this.$toast.add({
-        severity: "success",
-        summary: "Success Message",
-        detail: "Message Content",
-        life: 3000,
-      });
-    },
     handleSubmit(isFormValid) {
-
       const us = userStore();
-
       this.submitted = true;
       if (isFormValid) {
         this.$toast.add({
           severity: "success",
-          summary: "Success Message",
-          detail: "Message Content",
+          summary: "Login success",
+          detail: "Welcome to eRentCar",
           life: 3000,
         });
         usersApiService
@@ -172,7 +136,6 @@ export default {
                   this.$router.push("/mycars");
               }
               else{
-                  console.log("wII")
                   this.$router.push("/rents" );
               }
           })
@@ -187,13 +150,7 @@ export default {
           life: 3000,
         });
       }
-    },
-    loginDto() {
-      return {
-        email: this.email,
-        password: this.password,
-      };
-    },
+    }
   },
 };
 </script>

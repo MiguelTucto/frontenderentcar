@@ -1,40 +1,66 @@
 <template>
   <pv-toast />
   <div class="container">
-    <div class="flex flex-column align-items-center">
-      <pv-card class="mt-5 surface-card shadow-5">
+    <div class="card flex justify-content-center align-items-center">
+      <pv-card class="  mt-5 surface-card shadow-5 w-fit">
         <template v-slot:title>
           <div class="text-center">Put your Email & Password</div>
         </template>
         <template v-slot:content>
           <form @submit.prevent="handleSubmit(!v$.$invalid)">
             <div>
-              <label for="email" class="block text-900 font-medium mb-2"
+              <div>
+                <label for="email" class="block text-900 font-medium mb-2"
                 >Email</label
-              >
-              <pv-input-text
-                id="registerEmail"
-                v-model="email"
-                :class="{ 'p-invalid': v$.email.$invalid && submitted }"
-                class="w-full"
-                aria-describedby="email"
-              />
-              <small v-show="!v$.email.$model && submitted" class="p-error"
+                >
+                <div class="flex flex-row">
+                  <pv-input-text
+                    id="registerEmail"
+                    v-model="email"
+                    :class="{ 'p-invalid': v$.email.$invalid && submitted }"
+                    aria-describedby="email"
+                  />
+                  <div>
+                    <i v-show="v$.email.$model" class="pi pi-check bg-green-lighten-5 text-green border-circle p-2 ml-5" ></i>
+                  </div>
+                </div>
+                <small v-show="!v$.email.$model && submitted" class="p-error"
                 >Email is required.</small
-              >
-              <label for="password" class="block text-900 font-medium mb-2"
+                >
+              </div>
+              <div>
+                <label for="password" class="block text-900 font-medium mb-2"
                 >Password</label
-              >
-              <pv-input-text
-                id="registerPassword"
-                v-model="password"
-                :class="{ 'p-invalid': v$.password.$invalid && submitted }"
-                class="w-full"
-                aria-describedby="password"
-              />
-              <small v-show="!v$.password.$model && submitted" class="p-error"
+                >
+                <div class="flex flex-row">
+                  <pv-password
+                    id="registerPassword"
+                    v-model="password"
+                    :class="{ 'p-invalid': v$.password.$invalid && submitted }"
+                    aria-describedby="password"
+                  >
+                    <template #header>
+                      <h6>Pick a password</h6>
+                    </template>
+                    <template #footer>
+                      <pv-divider />
+                      <p class="mt-2">Suggestions</p>
+                      <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                        <li>At least one lowercase</li>
+                        <li>At least one uppercase</li>
+                        <li>At least one numeric</li>
+                        <li>Minimum 8 characters</li>
+                      </ul>
+                    </template>
+                  </pv-password>
+                  <div>
+                    <i v-show="v$.password.$model" class="pi pi-check bg-green-lighten-5 text-green border-circle p-2 ml-5" ></i>
+                  </div>
+                </div>
+                <small v-show="!v$.password.$model && submitted" class="p-error"
                 >Password is required.</small
-              >
+                >
+              </div>
             </div>
             <div class="flex justify-space-between mt-5">
               <pv-button
@@ -44,7 +70,6 @@
                 @click="prevPage"
               />
               <pv-button
-                icon="pi pi-arrow-right"
                 iconPos="right"
                 label="Continue"
                 class="p-button-rounded"
@@ -64,6 +89,7 @@ import { useVuelidate } from "@vuelidate/core";
 
 export default {
   name: "second-step.component",
+  components: { },
   setup: () => ({ v$: useVuelidate() }),
   data: () => {
     return {
@@ -117,4 +143,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.iconfield{
+    border-radius: 20px;
+    border-color: green;
+    color: green;
+}
+
+</style>

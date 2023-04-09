@@ -1,5 +1,6 @@
 <template>
   <pv-toast />
+  <pv-confirm-dialog></pv-confirm-dialog>
   <pv-toolbar class="border-none bg-blue-200">
     <template #start>
       <v-img
@@ -8,9 +9,9 @@
       ></v-img>
     </template>
     <template #end>
-      <div class="flex flex-row gap-3" id="sidebar">
+      <div class="flex flex-row gap-3" id="sidebar" v-if="toggle">
         <pv-button
-          @click="$router.push('/profile')"
+          @click="$router.push('/userprofile')"
           icon="pi pi-user"
           class="p-button-rounded p-button-lg p-button-text hover:bg-blue-500 hover:text-white transition-duration-1000 hidden sm:inline-flex"
           v-tooltip.bottom="'Profile'"
@@ -54,7 +55,7 @@
           v-tooltip.bottom="'Explore Cars'"
         />
         <pv-button
-          @click="$router.push('/login')"
+          @click="confirm1"
           icon="pi pi-sign-out"
           class="p-button-rounded p-button-lg p-button-text hover:bg-blue-500 hover:text-white transition-duration-1000 hidden sm:inline-flex"
           v-tooltip.bottom="'Log out'"
@@ -65,20 +66,23 @@
 </template>
 <script>
 import { userStore } from "@/user/login/stores/user-store";
+
 export default {
   name: "navbar.component",
-  components: {},
+  components: {  },
   data() {
     return {
       user: {},
+      toggle: true,
       items: [
         {
           label: "Profile",
           icon: "pi pi-user",
           command: () => {
-            this.$router.push("/profile");
+            this.$router.push("/userprofile");
           },
         },
+        { separator: true },
         {
           label: "My Cars",
           icon: "pi pi-car",
@@ -86,6 +90,7 @@ export default {
             this.$router.push("/mycars");
           },
         },
+        { separator: true },
         {
           label: "Add Car",
           icon: "pi pi-plus",
@@ -93,6 +98,7 @@ export default {
             this.$router.push("/add");
           },
         },
+        { separator: true },
         {
           label: "Search",
           icon: "pi pi-search",
@@ -100,11 +106,25 @@ export default {
             this.$router.push("/search-auto");
           },
         },
+        { separator: true },
         {
           label: "Sign Out",
           icon: "pi pi-sign-out",
           command: () => {
-            this.$router.push("/login");
+            this.$confirm.require({
+              message: '¿Are you sure you want to exit?',
+              header: 'Confirmation',
+              icon: 'pi pi-exclamation-circle',
+              acceptClass: 'p-button-danger',
+              accept: () => {
+                this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: '!Comeback soon!', life: 3000 });
+                this.logOut();
+                this.$router.push("/login");
+              },
+              reject: () => {
+
+              }
+            });
           },
         },
       ],
@@ -117,6 +137,28 @@ export default {
     toggleMenu(event) {
       this.$refs.menu.toggle(event);
     },
+    logOut() {
+      this.toggle = false;
+      this.user.logout();
+      console.log(this.user.name);
+      console.log("!it works");
+    },
+    confirm1() {
+      this.$confirm.require({
+        message: '¿Are you sure you want to exit?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-circle',
+        acceptClass: 'p-button-danger',
+        accept: () => {
+          this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: '!Comeback soon!', life: 3000 });
+          this.logOut();
+          this.$router.push("/login");
+        },
+        reject: () => {
+
+        }
+      });
+    }
   },
 };
 </script>
